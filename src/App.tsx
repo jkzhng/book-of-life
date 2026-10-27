@@ -15,7 +15,7 @@ import Activities from './pages/Activities';
 import StatsPage from './pages/StatsPage';
 import Trophies from './pages/Trophies';
 
-import { calculateActivityXP, calculateTotalXP, calculateLevel } from './logic/xp';
+import { calculateTotalXP } from './logic/xp';
 
 import type { Activity, NewActivity } from './types/activity';
 import type { Category } from './types/category';
@@ -35,7 +35,6 @@ function App() {
   const [isActivityFormOpen, setIsActivityFormOpen] = useState(false);
   const [isCategoryManagerOpen, setIsCategoryManagerOpen] = useState(false);
   const totalXP = backendStats?.total_xp ?? calculateTotalXP(activities, trophies);
-  const currentLevel = calculateLevel(totalXP);
 
   useEffect(() => {
     if (!token) {
