@@ -31,7 +31,10 @@ app = FastAPI(title="Book of Life API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://book-of-life.jacobz314159.workers.dev",
+    ],
     allow_credentials=False,
     allow_methods=["GET","POST","PATCH","DELETE","OPTIONS"],
     allow_headers=["Authorization","Content-Type"],
