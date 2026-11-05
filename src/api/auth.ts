@@ -6,6 +6,11 @@ interface LoginResponse {
   token_type: string;
 }
 
+interface RegisterResponse {
+  id: number;
+  email: string;
+}
+
 export async function login(email: string, password: string) {
   const formData = new URLSearchParams();
   formData.set("username", email);
@@ -20,4 +25,15 @@ export async function login(email: string, password: string) {
   );
 
   return result;
+}
+
+export async function register(email: string, password: string) {
+  return apiRequest<RegisterResponse>("/users/register",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+    }),
+  });
 }
